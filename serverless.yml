@@ -1,0 +1,49 @@
+service: user-crud
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-1
+  iam:
+    role: arn:aws:iam::234758500005:role/service-role/api-new-role
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+functions:
+  createUser:
+    handler: functions/createUser.handler
+    events:
+     - httpApi:
+         path: /createuser
+         method: post
+  userLogin:
+    handler: functions/login.handler
+    events:
+     - httpApi:
+         path: /login
+         method: post
+  deleteUser:
+    handler: functions/deleteUser.handler
+    events:
+     - httpApi:
+         path: /delete
+         method: post
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: username
+            AttributeType: S
+        KeySchema:
+          - AttributeName: username
+            KeyType: HASH

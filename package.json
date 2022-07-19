@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "aws-sdk": "^2.1177.0",
+    "uuid": "^8.3.2"
+  },
+  "name": "user-crud",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "serverless-webpack": "^5.7.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "zip-webpack-plugin": "^4.0.1"
+  }
+}
